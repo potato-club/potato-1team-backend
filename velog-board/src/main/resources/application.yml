@@ -1,9 +1,9 @@
 server:
-  port: 8060
+  port: 8050
 
 spring:
   application:
-    name: potato-velog-user
+    name: potato-velog-board
 
 eureka:
   client:
