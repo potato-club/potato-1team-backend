@@ -1,0 +1,3 @@
+rootProject.name = 'potato-velog'
+include 'velog-eureka'
+include 'velog-user'
