@@ -19,8 +19,6 @@ public class User extends BaseTimeEntity {
     @Column(nullable = false, length = 50, unique = true)
     private String email;
     @Column(nullable = false, length = 50)
-    private String password;
-    @Column(nullable = false, length = 50)
     private String name;
     @Column(nullable = false, unique = true)
     private String userId;
@@ -28,18 +26,16 @@ public class User extends BaseTimeEntity {
     private String encodedPassword;
 
     @Builder
-    public User(String email, String password, String name, String userId, String encodedPassword){
+    public User(String email, String name, String userId, String encodedPassword){
         this.email = email;
-        this.password = password;
         this.name = name;
         this.userId = userId;
         this.encodedPassword = encodedPassword;
     }
 
-    public static User of(String email, String password, String name, String userId, String encodedPassword){
+    public static User of(String email, String name, String userId, String encodedPassword){
         return new User().builder()
                 .email(email)
-                .password(password)
                 .name(name)
                 .userId(userId)
                 .encodedPassword(encodedPassword)
