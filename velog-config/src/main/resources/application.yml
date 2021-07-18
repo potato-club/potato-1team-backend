@@ -1,0 +1,16 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: potato-velog-config
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/YuSunjo/velog_config
+
+      #        awss3:
+#          region: ap-northeast-2
+#          bucket: kangwon
+
