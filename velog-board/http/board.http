@@ -1,0 +1,8 @@
+## 게시글 생성
+POST {{velog-gateway}}/potato-velog-board/api/v1/board
+Content-Type: application/json
+
+{
+  "title": "title",
+  "content": "content"
+}

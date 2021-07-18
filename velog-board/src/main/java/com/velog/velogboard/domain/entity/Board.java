@@ -23,7 +23,7 @@ public class Board {
     private String content;
 
     @Column(nullable = false)
-    private String userId;
+    private Long userId;
 
     private int likesCount;
 
@@ -31,12 +31,11 @@ public class Board {
     private final List<BoardLike> boardLikeList = new ArrayList<>();
 
     @Builder
-    public Board(Long id, String title, String content, String userId, int likesCount) {
-        this.id = id;
+    public Board(String title, String content, Long userId) {
         this.title = title;
         this.content = content;
         this.userId = userId;
-        this.likesCount = likesCount;
+        this.likesCount = 0;
     }
 
 }

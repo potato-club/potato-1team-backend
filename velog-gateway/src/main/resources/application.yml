@@ -42,3 +42,7 @@ spring:
           uri: lb://POTATO-VELOG-BOARD
           predicates:
             - Path=/potato-velog-board/**
+          filters:
+            - RemoveRequestHeader=Cookie
+            - RewritePath=/potato-velog-board/(?<segment>.*), /$\{segment}
+            # potato-velog-board로 들어오는것들은 로그인했는지 확인위해서 필터 추가

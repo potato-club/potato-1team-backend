@@ -1,0 +1,19 @@
+### 회원가입
+POST {{velog-gateway}}/potato-velog-user/createUser
+Content-Type: application/json
+
+{
+  "email": "test@naver.com",
+  "name": "test",
+  "password": "OhNoVeryLongPassword"
+}
+
+
+### 로그인
+POST {{velog-gateway}}/potato-velog-user/login
+Content-Type: application/json
+
+{
+  "email": "test@naver.com",
+  "password": "OhNoVeryLongPassword"
+}
