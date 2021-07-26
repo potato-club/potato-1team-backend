@@ -1,6 +1,7 @@
 package com.velog.veloguser.domain.entity;
 
 import com.velog.veloguser.domain.utils.BaseTimeEntity;
+import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -9,7 +10,7 @@ import javax.persistence.*;
 
 @Entity
 @Getter
-@NoArgsConstructor
+@NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class User extends BaseTimeEntity {
 
     @Id
@@ -26,14 +27,14 @@ public class User extends BaseTimeEntity {
     private String encodedPassword;
 
     @Builder
-    public User(String email, String name, String userId, String encodedPassword){
+    public User(String email, String name, String userId, String encodedPassword) {
         this.email = email;
         this.name = name;
         this.userId = userId;
         this.encodedPassword = encodedPassword;
     }
 
-    public static User of(String email, String name, String userId, String encodedPassword){
+    public static User of(String email, String name, String userId, String encodedPassword) {
         return new User().builder()
                 .email(email)
                 .name(name)

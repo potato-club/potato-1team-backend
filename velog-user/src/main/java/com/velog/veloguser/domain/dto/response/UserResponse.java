@@ -13,13 +13,13 @@ public class UserResponse {
     private String userId;
 
     @Builder
-    public UserResponse(String email, String name, String userId){
+    public UserResponse(String email, String name, String userId) {
         this.email = email;
         this.name = name;
         this.userId = userId;
     }
 
-    public static UserResponse of(String email, String name, String userId){
+    public static UserResponse of(String email, String name, String userId) {
         return new UserResponse().builder()
                 .email(email)
                 .name(name)

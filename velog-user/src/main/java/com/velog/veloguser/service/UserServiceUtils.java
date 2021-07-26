@@ -9,12 +9,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 
 public class UserServiceUtils {
 
-    public static String encodePassword(PasswordEncoder passwordEncoder, String password){
-       return passwordEncoder.encode(password);
+    public static String encodePassword(PasswordEncoder passwordEncoder, String password) {
+        return passwordEncoder.encode(password);
     }
 
     public static void validateEmail(UserRepository userRepository, String email) throws AlreadyExistException {
-        if(userRepository.findUserByEmail(email).isPresent()){
+        if (userRepository.findUserByEmail(email).isPresent()) {
             throw new AlreadyExistException("이미 존재하는 계정입니다");
         }
     }

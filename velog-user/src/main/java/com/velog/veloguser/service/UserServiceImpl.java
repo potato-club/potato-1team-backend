@@ -1,19 +1,18 @@
 package com.velog.veloguser.service;
 
-import com.velog.veloguser.domain.dto.request.UserRequest;
+import com.velog.veloguser.domain.dto.request.UserCreateRequest;
 import com.velog.veloguser.domain.dto.response.UserResponse;
 import com.velog.veloguser.domain.entity.User;
 import com.velog.veloguser.exception.AlreadyExistException;
 import com.velog.veloguser.repository.UserRepository;
-import javassist.NotFoundException;
+import com.velog.veloguser.validator.ValidationUtils;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.BindException;
+import org.springframework.validation.BindingResult;
 
-import java.util.ArrayList;
 import java.util.UUID;
 
 @Service
@@ -26,7 +25,9 @@ public class UserServiceImpl implements UserService {
 
     @Transactional
     @Override
-    public UserResponse createUser(UserRequest request) throws AlreadyExistException {
+    public UserResponse createUser(UserCreateRequest request, BindingResult bindingResult) throws AlreadyExistException, BindException {
+        ValidationUtils.validateBindingResult(bindingResult);
+
         String encodedPassword = UserServiceUtils.encodePassword(passwordEncoder, request.getPassword());
         UserServiceUtils.validateEmail(userRepository, request.getEmail());
 
